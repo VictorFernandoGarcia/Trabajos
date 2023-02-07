@@ -1,0 +1,90 @@
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+
+class empleado{
+private://atributos
+int clave;
+string nombre;
+string domicilio;
+float sueldo;
+string reportaA;
+public://metodos
+	empleado(int,string,string,float,string);//constructor
+		void imprime();
+		void cambiaDomic();
+		void CambiaReportaA();
+		void ActualSueldo();
+};
+
+empleado::empleado(int _clave, string _nombre, string _domicilio, float _sueldo, string _reportaA){
+	clave =_clave;
+	nombre =_nombre;
+	domicilio =_domicilio;
+	sueldo =_sueldo;
+	reportaA =_reportaA;}
+	
+void empleado::imprime(){//void imprime
+	cout<<"La clave es:"<<endl<<clave<<" El nombre es:"<<nombre<<" El domicilio es:"<<domicilio<<" El sueldo es:"<<sueldo<<" El empleado que reporto es:"<<reportaA;}
+	
+void empleado::cambiaDomic(){//void domicilio
+	cout<<"El domicilio antiguo es:"<<domicilio<<endl;
+	cout<<"Ingresa domicilio nuevo: "; cin>>domicilio;
+	cout<<"El domicilio nuevo es:"<<domicilio<<endl;}
+	
+void empleado::ActualSueldo(){//void sueldo
+	cout<<"El sueldo antiguo es:"<<sueldo<<endl;
+	cout<<"Ingresa sueldo nuevo: "; cin>>sueldo;
+	cout<<"El sueldo nuevo es:"<<sueldo<<endl;}	
+	
+void empleado::CambiaReportaA(){//void reporta
+	cout<<"El reporte antiguo es:"<<reportaA<<endl;
+	cout<<"Ingresa reporte nuevo:"; cin>>reportaA;
+	cout<<"El reporte nuevo es:"<<reportaA<<endl;}		
+
+
+int main(){//main, inicio del programa
+	int a;
+	
+	empleado JPl=empleado(222356,"Alonso","cereza",105.55,"pedro\n");
+	empleado JP=empleado(22357,"Sanchez","lazaro",101.55,"Soe\n");
+    
+	cout<<"Elige una opcion: "<<endl; 
+	cout<<"1-imprimir"<<endl;
+	cout<<"2-cambiar domicilio"<<endl;
+	cout<<"3-cambiar sueldo"<<endl;
+	cout<<"4-cambiar a quien reporta"<<endl; cin>>a;
+switch(a){//inicio del switch
+case 1: 
+	int a;
+	cout<<"Que empleado quieres imprimir?"<<endl;
+	cout<<"JefePlanta=1"<<endl;
+	cout<<"JefePersonal=2"<<endl;
+	cin>>a;
+	if(a==1){ JPl.imprime();}
+	else{ JP.imprime(); } break;
+case 2:  	
+    cout<<"Que empleado quieres modificar?"<<endl;
+	cout<<"JefePlanta=1"<<endl;
+	cout<<"JefePersonal=2"<<endl;
+	cin>>a;
+	if(a==1){ JPl.cambiaDomic();}
+	else{ JP.cambiaDomic(); } break;
+case 3:  
+    cout<<"Que empleado quieres modificar?"<<endl;
+	cout<<"JefePlanta=1"<<endl;
+	cout<<"JefePersonal=2"<<endl;
+	cin>>a;
+	if(a==1){ JPl.ActualSueldo();}
+	else{ JP.ActualSueldo(); } break;
+case 4:
+	 cout<<"Que empleado quieres modificar?"<<endl;
+	cout<<"JefePlanta=1"<<endl;
+	cout<<"JefePersonal=2"<<endl;
+	cin>>a;
+	if(a==1){ JPl.CambiaReportaA();}
+	else{ JP.CambiaReportaA(); } break;
+	}
+system("pause");
+return 0;
+}//fin del programa
