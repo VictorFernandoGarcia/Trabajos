@@ -1,90 +1,66 @@
-#include<iostream>
-#include<stdlib.h>
+#include <iostream>
+#include <stdlib.h>
 using namespace std;
 
-class empleado{
-private://atributos
-int clave;
-string nombre;
-string domicilio;
-float sueldo;
-string reportaA;
-public://metodos
-	empleado(int,string,string,float,string);//constructor
-		void imprime();
-		void cambiaDomic();
-		void CambiaReportaA();
-		void ActualSueldo();
+class materia{
+private:
+    int clave;
+    string profe;
+    string nombre;
+    string libro;
+public:
+    materia(int,string,string,string);
+    void imprime();
+    void cambiarclave();
+    void cambiarprofe();
 };
+materia::materia(int _clave,string _profe,string _nombre,string _libro){
+    clave=_clave;
+    profe=_profe;
+    nombre=_nombre;
+    libro=_libro;}
 
-empleado::empleado(int _clave, string _nombre, string _domicilio, float _sueldo, string _reportaA){
-	clave =_clave;
-	nombre =_nombre;
-	domicilio =_domicilio;
-	sueldo =_sueldo;
-	reportaA =_reportaA;}
-	
-void empleado::imprime(){//void imprime
-	cout<<"La clave es:"<<endl<<clave<<" El nombre es:"<<nombre<<" El domicilio es:"<<domicilio<<" El sueldo es:"<<sueldo<<" El empleado que reporto es:"<<reportaA;}
-	
-void empleado::cambiaDomic(){//void domicilio
-	cout<<"El domicilio antiguo es:"<<domicilio<<endl;
-	cout<<"Ingresa domicilio nuevo: "; cin>>domicilio;
-	cout<<"El domicilio nuevo es:"<<domicilio<<endl;}
-	
-void empleado::ActualSueldo(){//void sueldo
-	cout<<"El sueldo antiguo es:"<<sueldo<<endl;
-	cout<<"Ingresa sueldo nuevo: "; cin>>sueldo;
-	cout<<"El sueldo nuevo es:"<<sueldo<<endl;}	
-	
-void empleado::CambiaReportaA(){//void reporta
-	cout<<"El reporte antiguo es:"<<reportaA<<endl;
-	cout<<"Ingresa reporte nuevo:"; cin>>reportaA;
-	cout<<"El reporte nuevo es:"<<reportaA<<endl;}		
+void materia::imprime(){//void imprime
+    cout<<"El nombre es: "<<nombre<<endl<<"La clave es: "<<clave<<endl<<"el profe es: "<<profe<<endl<<"El ibro que se usa es: "<<libro<<endl;}
 
+void materia::cambiarclave(){//cambiar clave
+    cout<<"La anterior clave es:"<<clave<<endl;
+    cout<<"Ingresa la nueva clave:"<<endl; cin>>clave;
+    cout<<"La nueva clave es:"<<clave<<endl;}
 
-int main(){//main, inicio del programa
-	int a;
-	
-	empleado JPl=empleado(222356,"Alonso","cereza",105.55,"pedro\n");
-	empleado JP=empleado(22357,"Sanchez","lazaro",101.55,"Soe\n");
-    
-	cout<<"Elige una opcion: "<<endl; 
-	cout<<"1-imprimir"<<endl;
-	cout<<"2-cambiar domicilio"<<endl;
-	cout<<"3-cambiar sueldo"<<endl;
-	cout<<"4-cambiar a quien reporta"<<endl; cin>>a;
-switch(a){//inicio del switch
-case 1: 
-	int a;
-	cout<<"Que empleado quieres imprimir?"<<endl;
-	cout<<"JefePlanta=1"<<endl;
-	cout<<"JefePersonal=2"<<endl;
-	cin>>a;
-	if(a==1){ JPl.imprime();}
-	else{ JP.imprime(); } break;
-case 2:  	
-    cout<<"Que empleado quieres modificar?"<<endl;
-	cout<<"JefePlanta=1"<<endl;
-	cout<<"JefePersonal=2"<<endl;
-	cin>>a;
-	if(a==1){ JPl.cambiaDomic();}
-	else{ JP.cambiaDomic(); } break;
-case 3:  
-    cout<<"Que empleado quieres modificar?"<<endl;
-	cout<<"JefePlanta=1"<<endl;
-	cout<<"JefePersonal=2"<<endl;
-	cin>>a;
-	if(a==1){ JPl.ActualSueldo();}
-	else{ JP.ActualSueldo(); } break;
-case 4:
-	 cout<<"Que empleado quieres modificar?"<<endl;
-	cout<<"JefePlanta=1"<<endl;
-	cout<<"JefePersonal=2"<<endl;
-	cin>>a;
-	if(a==1){ JPl.CambiaReportaA();}
-	else{ JP.CambiaReportaA(); } break;
-	}
-system("pause");
-return 0;
-}//fin del programa
+void materia::cambiarprofe(){//cambiar profe
+    cout<<"El anterior profe es:"<<profe<<endl;
+    cout<<"ingresa nuevo nombre del profe:"; cin>>profe;
+    cout<<"El nuevo profe es:"<<profe<<endl;}
+
+int main(){//inicio de programa
+    int a=0,b=1;
+    materia Programacion=materia(12345,"Ramon Gonzalez","Programacion","C++ iniciando");
+    materia BaseDatos=materia(67891,"Pedro Manolo","Base de Datos","Base de datos1");
+
+    cout<<"Bienvenido al programa de materias"<<endl;
+    while(b==1){
+    cout<<"Que deseas realizar?"<<endl<<"1=imprimir"<<endl<<"2=cambiar clave"<<endl<<"3=cambiar profe"<<endl; cin>>a;
+    switch(a){
+
+    case 1://imprimir
+    int a;
+	cout<<"¿Que materia quieres imprimir?"<<endl;
+	cout<<"¿Que clave quieres cambiar?"<<endl<<"Programacion=1"<<endl<<"Base de datos=2"<<endl; cin>>a;
+	if(a==1){ Programacion.imprime();}
+	else{ BaseDatos.imprime(); } break;
+
+    case 2://cambiar clave
+    cout<<"¿Que clave quieres cambiar?"<<endl<<"Programacion=1"<<endl<<"Base de datos=2"<<endl; cin>>a;
+    if(a==1){ Programacion.cambiarclave();}
+	else{ BaseDatos.cambiarclave();} break;
+
+	case 3:
+    cout<<"¿Que profe quieres cambiar?"<<endl<<"Programacion=1"<<endl<<"Base de datos=2"<<endl; cin>>a;
+    if(a==1){ Programacion.cambiarprofe();}
+	else{ BaseDatos.cambiarprofe();} break;
+    default: cout<<"No eligio ninguno";
+    }
+    cout<<"Quieres hacer algo mas?"<<endl<<"si=1 no=2"<<endl; cin>>b;}
+
+    return 0;
